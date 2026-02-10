@@ -37,7 +37,7 @@ export default async function PostsPage() {
           </div>
 
           <div className="flex flex-col items-center justify-center gap-20 text-sm">
-            <button>Like</button>
+            <button>{post.reactions.likes} likes</button>
             <button>Favourite</button>
           </div>
 
