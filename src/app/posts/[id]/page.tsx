@@ -1,5 +1,8 @@
 export const dynamic = "force-dynamic";
 
+import LikeButton from "@/components/LikeButton";
+import FavouriteButton from "@/components/FavouriteButton";
+
 interface Post {
   id: number;
   title: string;
@@ -50,12 +53,13 @@ export default async function PostDetailPage({ params,}: {
         </p>
       </div>
 
-      <div className="text-gray-800 leading-relaxed mb-10">
-        <button>{post.reactions.likes} likes</button>
-        <span className="p-3"></span>
-        <button>Add to favourites</button>
+      <div className="flex items-center gap-6 mb-10">
+        <LikeButton
+          postId={post.id}
+          initialLikes={post.reactions.likes}
+        />
+        <FavouriteButton postId={post.id} />
       </div>
-
 
       <section>
         <h3 className="text-xl font-semibold mb-6">

@@ -1,5 +1,9 @@
 export const dynamic = "force-static";
 
+import LikeButton from "@/components/LikeButton";
+import FavouriteButton from "@/components/FavouriteButton";
+import Link from "next/link";
+
 interface Post {
   id: number;
   title: string;
@@ -31,14 +35,19 @@ export default async function PostsPage() {
               {post.body}
             </p>
 
-            <a href={`/posts/${post.id}`} className="text-sm font-medium text-green-500">
+            <Link href={`/posts/${post.id}`} className="text-sm font-medium text-green-500">
               Read more
-            </a>
+            </Link>
+
           </div>
 
-          <div className="flex flex-col items-center justify-center gap-20 text-sm">
-            <button>{post.reactions.likes} likes</button>
-            <button>Favourite</button>
+          <div className="flex flex-col items-center justify-center gap-6 text-sm">
+            <LikeButton
+              postId={post.id}
+              initialLikes={post.reactions.likes}
+            />
+
+            <FavouriteButton postId={post.id} />
           </div>
 
         </div>
