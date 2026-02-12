@@ -17,7 +17,11 @@ export const useAppStore = create<AppState>((set) => ({
   likedPosts: [],
 
   login: () => set({ isLoggedIn: true }),
-  logout: () => set({ isLoggedIn: false }),
+  logout: () => set({
+    isLoggedIn: false,
+    favouritePosts: [],
+    likedPosts: [],
+  }),
 
   toggleFavourite: (postId: number) =>
     set((state) => {
