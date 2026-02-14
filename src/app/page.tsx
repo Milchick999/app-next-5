@@ -20,7 +20,7 @@ export default async function PostsPage() {
   const posts: Post[] = data.posts;
 
   return (
-    <div className="max-w-3xl mx-auto px-4">
+    <div className="max-w-3xl mx-auto px-4 py-10">
       <h1 className="text-2xl font-bold mb-6">Posts</h1>
 
       {posts.map((post) => (
@@ -38,7 +38,6 @@ export default async function PostsPage() {
             <Link href={`/posts/${post.id}`} className="text-sm font-medium text-green-500">
               Read more
             </Link>
-
           </div>
 
           <div className="flex flex-col items-center justify-center gap-6 text-sm">
