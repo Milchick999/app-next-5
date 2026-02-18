@@ -3,6 +3,19 @@ export const dynamic = "force-dynamic";
 import LikeButton from "@/components/LikeButton";
 import FavouriteButton from "@/components/FavouriteButton";
 import { getPostById, getCommentsByPostId } from "@/lib/actions";
+import { Metadata } from 'next';
+
+export async function generateMetadata(
+  { params }: { params: Promise<{ id: string }> }
+): Promise<Metadata> {
+  const { id } = await params;
+  const { title, body } = await getPostById(id);
+
+  return {
+    title: `${title} MyBlog`,
+    description: body.slice(0, 160),
+  };
+}
 
 export default async function PostDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
