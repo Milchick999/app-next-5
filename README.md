@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MyBlog (Blog App)
 
-## Getting Started
+Single Page Application for browsing posts, managing favourites, and interacting with content.
+Data is fetched from the DummyJSON API.
 
-First, run the development server:
+## About the Project
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This project is a Next.js-based application featuring:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Server-Side Rendering (SSR) & Static Site Generation (SSG) for optimal performance
+- Post list, detailed post view, and comments
+- Authentication simulation (Login/Logout)
+- Interactive Likes system and Favourites list
+- Client-side state persistence (Zustand)
+- Responsive UI built with Tailwind CSS and Shadcn UI
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Technologies & Dependencies
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Next.js 15 (App Router)
+- TypeScript
+- Zustand (State management with persistence)
+- Tailwind CSS & Shadcn UI (Styling)
 
-## Learn More
+## How to Run Locally
 
-To learn more about Next.js, take a look at the following resources:
+- Install dependencies:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```npm install```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Start development server:
 
-## Deploy on Vercel
+```npm run dev```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Build for production:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```npm run build```
+
+## Deployment
+
+Netlify:  
+[https://my-blog-next.netlify.app/](https://my-blog-next.netlify.app/)
+
+
+## Project Structure
+
+```text
+app-next-5/
+├── public/                - Static assets (images, icons)
+├── src/
+│   ├── app/               - File-based routing main feed and page layouts
+│   │   ├── favourites/    - Favourites page
+│   │   ├── login/         - Login page
+│   │   └── posts/[id]/    - Dynamic route for post details
+│   ├── components/        - Shared UI components (Navigation, Buttons)
+│   │   └── ui/            - Base Shadcn UI components
+│   ├── lib/               - Server Actions and utility functions
+│   ├── store/             - Global state management (Zustand)
+│   └── types/             - Shared TypeScript interfaces (Post, Comment)
+└── package.json           - Project configuration and dependencies
