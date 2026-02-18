@@ -25,7 +25,13 @@ export default function FavouriteButton({ postId }: Props) {
   };
 
   return (
-    <Button onClick={handleFavourite} variant="ghost" size="sm" className="flex items-center gap-2">
+    <Button
+      aria-label="Add to favourites"
+      onClick={handleFavourite}
+      variant="ghost"
+      size="sm"
+      className="flex items-center gap-2"
+    >
       <Bookmark className={`h-4 w-4 ${isFavourite ? 'fill-violet-500 text-violet-500' : 'text-gray-400'}`} />
 
       <span className="w-6" />

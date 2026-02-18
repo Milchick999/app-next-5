@@ -24,7 +24,7 @@ export default async function PostsPage() {
               {post.body}
             </p>
 
-            <Link href={`/posts/${post.id}`} className="text-sm font-medium text-green-500">
+            <Link href={`/posts/${post.id}`} className="text-sm font-medium text-green-700">
               Read more
             </Link>
           </div>
