@@ -2,31 +2,8 @@ export const dynamic = "force-dynamic";
 
 import LikeButton from "@/components/LikeButton";
 import FavouriteButton from "@/components/FavouriteButton";
-
-interface Post {
-  id: number;
-  title: string;
-  body: string;
-  reactions: {
-    likes: number,
-    dislikes: number
-  },
-}
-
-interface Comment {
-  id: number;
-  body: string;
-  likes: number;
-  user: {
-    username: string;
-    fullName: string;
-  };
-}
-
-interface CommentsResponse {
-  comments: Comment[];
-  total: number;
-}
+import { Post } from '@/types/post';
+import { Comment, CommentsResponse } from '@/types/comment';
 
 export default async function PostDetailPage({ params,}: {
   params: Promise<{ id: string }>;
