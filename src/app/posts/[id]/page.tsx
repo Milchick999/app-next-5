@@ -2,21 +2,15 @@ export const dynamic = "force-dynamic";
 
 import LikeButton from "@/components/LikeButton";
 import FavouriteButton from "@/components/FavouriteButton";
-import { Post } from '@/types/post';
-import { Comment, CommentsResponse } from '@/types/comment';
+import { getPostById, getCommentsByPostId } from "@/lib/actions";
 
-export default async function PostDetailPage({ params,}: {
-  params: Promise<{ id: string }>;
-}) {
+export default async function PostDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
-  const [postRes, commentsRes] = await Promise.all([
-    fetch(`https://dummyjson.com/posts/${id}`),
-    fetch(`https://dummyjson.com/posts/${id}/comments`)
+  const [post, commentsData] = await Promise.all([
+    getPostById(id),
+    getCommentsByPostId(id)
   ]);
-
-  const post: Post = await postRes.json();
-  const commentsData: CommentsResponse = await commentsRes.json();
 
   return (
     <article className="max-w-3xl mx-auto py-10 px-4">

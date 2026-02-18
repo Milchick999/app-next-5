@@ -4,10 +4,12 @@ import { useEffect, useState } from 'react';
 import { useAppStore } from '@/store/useAppStore';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { getPosts } from '@/lib/actions';
+import { Post } from '@/types/post';
 
 export default function FavouritesPage() {
   const { favouritePosts, isLoggedIn } = useAppStore();
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
@@ -23,10 +25,9 @@ export default function FavouritesPage() {
 
       try {
         setLoading(true);
-        const result = await fetch('https://dummyjson.com/posts');
-        const data = await result.json();
+        const allPosts = await getPosts();
 
-        const filtered = data.posts.filter((post: any) =>
+        const filtered = allPosts.filter((post) =>
           favouritePosts.includes(post.id)
         );
 

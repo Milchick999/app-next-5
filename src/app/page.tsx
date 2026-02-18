@@ -3,12 +3,10 @@ export const dynamic = "force-static";
 import LikeButton from "@/components/LikeButton";
 import FavouriteButton from "@/components/FavouriteButton";
 import Link from "next/link";
-import { Post } from '@/types/post';
+import { getPosts } from "@/lib/actions";
 
 export default async function PostsPage() {
-  const response = await fetch("https://dummyjson.com/posts");
-  const data = await response.json();
-  const posts: Post[] = data.posts;
+  const posts = await getPosts();
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-10">
